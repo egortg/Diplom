@@ -1,0 +1,252 @@
+.aboutbank {
+  margin-top: 144px;
+  display: flex;
+  justify-content: center;
+
+  
+  @media (max-width: 1200px) {
+    margin-top: 100px;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 576px) {
+    margin-top: 40px;
+  }
+
+  &__box {
+    max-width: 1600px;
+    width: 100%;
+    padding: 0 20px;
+
+    @media (max-width: 1600px) {
+      padding: 0 20px;
+    }
+
+    @media (max-width: 1440px) {
+      padding: 0 16px;
+    }
+
+    @media (max-width: 1280px) {
+      padding: 0 14px;
+    }
+
+    @media (max-width: 1024px) {
+      padding: 0 12px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 10px;
+    }
+
+    @media (max-width: 576px) {
+      padding: 0 8px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0 6px;
+    }
+
+    @media (max-width: 375px) {
+      padding: 0 5px;
+    }
+  }
+
+  &__heading {
+    padding-bottom: 50px;
+
+    @media (max-width: 768px) {
+      padding-bottom: 30px;
+    }
+
+    @media (max-width: 576px) {
+      padding-bottom: 20px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @media (max-width: 768px) {
+      gap: 20px;
+    }
+  }
+
+  &__bestservicebox {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    height: 297px;
+    border-radius: 20px;
+    padding: 10px 30px;
+    background-color: var(--second-color);
+    gap: 30px; // Добавляем gap для мобильных
+
+    @media (max-width: 992px) {
+      padding: 20px;
+      height: auto;
+      min-height: 250px;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 25px 20px;
+      min-height: auto;
+    }
+  }
+
+  &__bestservicetext {
+    max-width: 760px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+    }
+  }
+
+  &__bestservicetitle {
+    padding-bottom: 20px;
+
+    @media (max-width: 576px) {
+      padding-bottom: 15px;
+    }
+  }
+
+  // Изображение в лучшем сервисе
+  &__bestserviceimg {
+    @media (max-width: 768px) {
+      max-width: 150px;
+      height: auto;
+    }
+    @media (max-width: 576px) {
+      max-width: 120px;
+    }
+  }
+
+  // secondadv
+  &__otheradv {
+    display: flex;
+    gap: 20px;
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  &__secondadvimg{
+      @media (max-width: 768px) {
+      max-width: 150px;
+      height: auto;
+    }
+}
+
+  &__secondadvbox {
+    height: 241px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    max-width: 790px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px 30px;
+    background-color: var(--second-color);
+    gap: 30px;
+
+    @media (max-width: 1200px) {
+      max-width: 50%;
+    }
+
+    @media (max-width: 992px) {
+      max-width: 100%;
+      height: auto;
+      min-height: 220px;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 25px 20px;
+    }
+  }
+
+  &__secondadvtext {
+    max-width: 345px;
+    width: 100%;
+
+    @media (max-width: 992px) {
+      max-width: 100%;
+    }
+  }
+
+  &__secondadvtitle {
+    padding-bottom: 20px;
+
+    @media (max-width: 576px) {
+      padding-bottom: 15px;
+    }
+  }
+
+  // thirdadv
+  &__thirdadvbox {
+    height: 241px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    max-width: 790px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 10px 30px;
+    background-color: var(--second-color);
+    gap: 30px;
+
+    @media (max-width: 1200px) {
+      max-width: 50%;
+    }
+
+    @media (max-width: 992px) {
+      max-width: 100%;
+      height: auto;
+      min-height: 220px;
+    }
+
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 25px 20px;
+    }
+  }
+
+
+    &__thirdadvimg{
+      @media (max-width: 768px) {
+      max-width: 150px;
+      height: auto;
+    }
+}
+  &__thirdadvtext {
+    max-width: 345px;
+    width: 100%;
+
+    @media (max-width: 992px) {
+      max-width: 100%;
+    }
+  }
+
+  &__thirdadvtitle {
+    padding-bottom: 20px;
+
+    @media (max-width: 576px) {
+      padding-bottom: 15px;
+    }
+  }
+}

@@ -1,0 +1,353 @@
+.creditcardform {
+  margin-top: 144px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // Адаптация верхнего отступа
+  @media (max-width: 1600px) {
+    margin-top: 130px;
+  }
+
+  @media (max-width: 1440px) {
+    margin-top: 120px;
+  }
+
+  @media (max-width: 1280px) {
+    margin-top: 110px;
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 100px;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 80px;
+  }
+
+  @media (max-width: 576px) {
+    margin-top: 60px;
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 50px;
+  }
+
+  @media (max-width: 375px) {
+    margin-top: 40px;
+  }
+
+  &__box {
+    padding-top: 66px;
+    padding-bottom: 186px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 790px;
+    width: 100%;
+    border-radius: 20px;
+    background: var(--second-color);
+
+    @media (max-width: 1280px) {
+      padding-top: 55px;
+      padding-bottom: 150px;
+    }
+
+    @media (max-width: 1024px) {
+      padding-top: 50px;
+      padding-bottom: 130px;
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 40px;
+      padding-bottom: 100px;
+    }
+
+    @media (max-width: 576px) {
+      padding-top: 35px;
+      padding-bottom: 80px;
+    }
+
+    @media (max-width: 480px) {
+      padding-top: 30px;
+      padding-bottom: 60px;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    padding: 0 20px;
+
+    @media (max-width: 1280px) {
+      font-size: 32px;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 28px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 22px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+    }
+  }
+
+  &__formbox {
+    padding-top: 40px;
+    gap: 35px;
+    display: flex;
+    flex-direction: column;
+    max-width: 520px;
+    width: 100%;
+
+    @media (max-width: 1280px) {
+      padding-top: 35px;
+      gap: 30px;
+    }
+
+    @media (max-width: 1024px) {
+      padding-top: 30px;
+      gap: 28px;
+    }
+
+    @media (max-width: 768px) {
+      padding-top: 25px;
+      gap: 25px;
+    }
+
+    @media (max-width: 576px) {
+      padding-top: 20px;
+      gap: 20px;
+    }
+
+    @media (max-width: 520px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    @media (max-width: 480px) {
+      padding-left: 15px;
+      padding-right: 15px;
+      gap: 18px;
+    }
+
+    @media (max-width: 375px) {
+      padding-left: 10px;
+      padding-right: 10px;
+      gap: 15px;
+    }
+  }
+
+  &__inputsbox {
+    gap: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+
+  &__input {
+    padding-left: 16px;
+    border: none;
+    border-radius: 20px;
+    height: 48px;
+    background: #efeeee;
+    width: 100%;
+    font-size: 14px;
+
+    @media (max-width: 768px) {
+      height: 44px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 576px) {
+      height: 42px;
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--primary-color);
+    }
+  }
+
+  &__inputinbox {
+    padding-left: 16px;
+    border: none;
+    border-radius: 20px;
+    height: 48px;
+    background: #efeeee;
+    max-width: 250px;
+    width: 100%;
+    font-size: 14px;
+
+    @media (max-width: 768px) {
+      height: 44px;
+      font-size: 13px;
+      max-width: 100%;
+    }
+
+    @media (max-width: 576px) {
+      height: 42px;
+    }
+
+    &::placeholder {
+      color: #999;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--primary-color);
+    }
+  }
+
+  &__btnbox {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  &__btn {
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px 69px;
+    background: var(--primary-color);
+    color: var(--second-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-weight: 500;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      opacity: 0.9;
+    }
+
+    @media (max-width: 1280px) {
+      padding: 10px 60px;
+    }
+
+    @media (max-width: 1024px) {
+      padding: 10px 55px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px 50px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 576px) {
+      padding: 10px 40px;
+      width: 100%;
+    }
+
+    @media (max-width: 480px) {
+      padding: 10px 30px;
+    }
+  }
+
+  &__radiobox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    @media (max-width: 576px) {
+      gap: 8px;
+    }
+  }
+
+  // Стили для кастомного чекбокса/радио
+  .custom_radio {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+
+    @media (max-width: 576px) {
+      gap: 8px;
+    }
+  }
+
+  &__radiobtn {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .radio_mark {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: #d9d9d9;
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    @media (max-width: 576px) {
+      width: 16px;
+      height: 16px;
+      margin-top: 1px;
+    }
+  }
+
+  &__radiobtn:checked + .radio_mark {
+    background: var(--primary-color);
+    position: relative;
+  }
+
+  &__radiobtn:checked + .radio_mark::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+
+    @media (max-width: 576px) {
+      left: 4px;
+      top: 0px;
+      width: 5px;
+      height: 8px;
+    }
+  }
+
+  h5 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.4;
+    color: var(--primary-color);
+    cursor: pointer;
+    flex: 1;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 12px;
+    }
+  }
+}
