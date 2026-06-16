@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import s from "./couldbeint.module.scss";
 import BlockoneimgCard from "../../../images/BlockoneimgCard.png";
 import BlocktwoimgCard from "../../../images/BlocktwoimgCard.png";
@@ -20,11 +20,18 @@ const Card = ({ title, description, imageSrc, link, className }) => {
     </>
   );
 
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // плавная прокрутка
+    });
+  };
+
   if (link) {
     return (
-      <div className={className} onClick={() => window.location.href = link}>
+      <Link to={link} className={className} onClick={handleClick}>
         <CardContent />
-      </div>
+      </Link>
     );
   }
 

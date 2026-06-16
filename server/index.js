@@ -15,7 +15,6 @@ const PORT = 5000;
 
 // ============ НАСТРОЙКА MULTER ДЛЯ ЗАГРУЗКИ ИЗОБРАЖЕНИЙ ============
 
-// Создаем папку uploads если её нет
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir, { recursive: true });
@@ -50,7 +49,6 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-// Статические файлы для загруженных изображений
 app.use('/uploads', express.static(uploadsDir));
 
 // ============ ХРАНИЛИЩА ============
@@ -274,6 +272,21 @@ app.get('/api/auth/me', (req, res) => {
     }
 });
 
+// ============ ВЫХОД ИЗ СИСТЕМЫ (ИСПРАВЛЕННЫЙ) ============
+app.post('/api/auth/logout', (req, res) => {
+    console.log('👋 Logout request received');
+    
+    // Удаляем токен из хранилища (если есть)
+    // В in-memory хранилище просто возвращаем успех
+    // Если нужно удалить refresh token, можно добавить логику
+    
+    // Всегда возвращаем успех для клиента
+    return res.status(200).json({ 
+        success: true, 
+        message: 'Вы успешно вышли из системы' 
+    });
+});
+
 // ============ АДМИН МАРШРУТЫ ============
 
 // Админ логин
@@ -343,13 +356,12 @@ app.get('/api/admin/dashboard', authenticateAdmin, (req, res) => {
     });
 });
 
-// ============ МАРШРУТ ДЛЯ ЗАГРУЗКИ ИЗОБРАЖЕНИЙ (ВОЗВРАЩАЕТ ПОЛНЫЙ URL) ============
+// ============ МАРШРУТ ДЛЯ ЗАГРУЗКИ ИЗОБРАЖЕНИЙ ============
 app.post('/api/admin/upload', authenticateAdmin, upload.single('image'), (req, res) => {
     if (!req.file) {
         return res.status(400).json({ success: false, message: 'No file uploaded' });
     }
     
-    // Возвращаем полный URL для доступа к изображению
     const baseUrl = `http://localhost:${PORT}`;
     const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
     
@@ -998,9 +1010,7 @@ app.get('/api/content/credit-card-form', (req, res) => {
     res.json(creditCardForm);
 });
 
-
-
-// ============ ХРАНИЛИЩЕ ДЛЯ СТРАНИЦЫ КРЕДИТА ============
+// ============ УПРАВЛЕНИЕ СТРАНИЦЕЙ КРЕДИТА ============
 
 // Баннер кредита
 let creditBanner = {
@@ -1066,9 +1076,7 @@ let creditForm = {
     updated_at: new Date().toISOString()
 };
 
-// ============ УПРАВЛЕНИЕ СТРАНИЦЕЙ КРЕДИТА (АДМИН) ============
-
-// Баннер
+// Админ маршруты для кредита
 app.get('/api/admin/credit-banner', authenticateAdmin, (req, res) => {
     res.json(creditBanner);
 });
@@ -1088,7 +1096,6 @@ app.put('/api/admin/credit-banner', authenticateAdmin, (req, res) => {
     res.json({ success: true, data: creditBanner });
 });
 
-// Преимущества
 app.get('/api/admin/credit-benefits', authenticateAdmin, (req, res) => {
     res.json(creditBenefits);
 });
@@ -1129,7 +1136,6 @@ app.delete('/api/admin/credit-benefits/:id', authenticateAdmin, (req, res) => {
     res.json({ success: true, message: 'Преимущество удалено' });
 });
 
-// Форма
 app.get('/api/admin/credit-form', authenticateAdmin, (req, res) => {
     res.json(creditForm);
 });
@@ -1148,8 +1154,7 @@ app.put('/api/admin/credit-form', authenticateAdmin, (req, res) => {
     res.json({ success: true, data: creditForm });
 });
 
-// ============ ПУБЛИЧНЫЕ МАРШРУТЫ ============
-
+// Публичные маршруты для кредита
 app.get('/api/content/credit-banner', (req, res) => {
     if (creditBanner.is_active === false) return res.json(null);
     res.json(creditBanner);

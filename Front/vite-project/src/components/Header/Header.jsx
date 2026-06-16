@@ -14,7 +14,7 @@ const Header = () => {
   const { user, logout, isAuthenticated } = useAuth();
   const location = useLocation();
 
-  // Проверяем, находится ли пользователь на странице админ-панели
+  
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   const toggleMenu = () => {
@@ -42,7 +42,7 @@ const Header = () => {
     closeMenu();
   };
 
-  // Если это админ-маршрут - не показываем шапку
+  
   if (isAdminRoute) {
     return null;
   }

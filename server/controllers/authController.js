@@ -142,23 +142,57 @@ export const refreshToken = asyncHandler(async (req, res) => {
 });
 
 // =============================================
-// 4. ВЫХОД ИЗ СИСТЕМЫ
+// 4. ВЫХОД ИЗ СИСТЕМЫ (ИСПРАВЛЕННЫЙ)
 // =============================================
 export const logout = asyncHandler(async (req, res) => {
+    console.log('👋 Logout request received');
+    
+    // Проверяем, есть ли пользователь в запросе
+    if (!req.user) {
+        console.log('⚠️ No user in request, but returning success for client cleanup');
+        // Все равно возвращаем успех, чтобы клиент мог очистить localStorage
+        return res.json({ 
+            success: true, 
+            message: 'Сессия завершена' 
+        });
+    }
+    
     const { userId } = req.user;
+    console.log(`👤 User ${userId} logging out`);
 
-    await pool.query(
-        'UPDATE users SET refresh_token = NULL WHERE id = $1',
-        [userId]
-    );
+    try {
+        // Обновляем refresh_token в базе данных
+        await pool.query(
+            'UPDATE users SET refresh_token = NULL WHERE id = $1',
+            [userId]
+        );
+        console.log(`✅ Refresh token cleared for user ${userId}`);
+    } catch (error) {
+        console.error('❌ Error clearing refresh token:', error);
+        // Даже если ошибка, возвращаем успех для клиента
+    }
 
-    res.json({ success: true, message: 'Выход выполнен успешно' });
+    res.json({ 
+        success: true, 
+        message: 'Выход выполнен успешно' 
+    });
 });
 
 // =============================================
 // 5. ПОЛУЧЕНИЕ ТЕКУЩЕГО ПОЛЬЗОВАТЕЛЯ
 // =============================================
 export const getCurrentUser = asyncHandler(async (req, res) => {
+    console.log('👤 Get current user request');
+    
+    // Проверяем, есть ли пользователь в запросе
+    if (!req.user || !req.user.userId) {
+        console.log('⚠️ No user in request or missing userId');
+        return res.status(401).json({
+            success: false,
+            message: 'Не авторизован'
+        });
+    }
+    
     const result = await pool.query(
         `SELECT id, email, phone, full_name, created_at, is_verified 
          FROM users WHERE id = $1`,
