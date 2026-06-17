@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import s from "./couldbeint.module.scss";
-import BlockoneimgCard from "../../../images/BlockoneimgCard.png";  
+import BlockoneimgCard from "../../../images/BlockoneimgCard.png";
 import BlocktwoimgCard from "../../../images/BlocktwoimgCard.png";
 import BlockthreeimgMoney from "../../../images/BlockthreeimgMoney.png";
 import Blockfourimgvault from "../../../images/Blockfourimgvault.png";
@@ -61,7 +61,7 @@ const Couldbeint = () => {
 
   const fetchBlocks = async () => {
     try {
-      const response = await fetch('https://diplom-lpv5.onrender.com/api/content/interest-blocks');
+      const response = await fetch('http://localhost:5000/api/content/interest-blocks');
       const data = await response.json();
       setBlocks(data);
     } catch (error) {

@@ -21,7 +21,7 @@ const CreditForm = () => {
 
   const fetchForm = async () => {
     try {
-      const response = await fetch('https://diplom-lpv5.onrender.com/api/content/credit-form');
+      const response = await fetch('http://localhost:5000/api/content/credit-form');
       const data = await response.json();
       setFormConfig(data);
     } catch (error) {

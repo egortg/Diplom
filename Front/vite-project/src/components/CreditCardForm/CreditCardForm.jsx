@@ -13,7 +13,7 @@ const CreditCardForm = () => {
 
     const fetchForm = async () => {
         try {
-            const response = await fetch('https://diplom-lpv5.onrender.com/api/content/credit-card-form');
+            const response = await fetch('http://localhost:5000/api/content/credit-card-form');
             const data = await response.json();
             
             // Если форма не активна - не загружаем данные

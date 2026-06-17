@@ -11,7 +11,7 @@ const CreditCardBlock = () => {
 
     const fetchSteps = async () => {
         try {
-            const response = await fetch('https://diplom-lpv5.onrender.com/api/content/credit-card-steps');
+            const response = await fetch('http://localhost:5000/api/content/credit-card-steps');
             const data = await response.json();
             setSteps(data);
         } catch (error) {
