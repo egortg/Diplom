@@ -242,6 +242,9 @@
           transform: rotate(45deg) translate(4px, 4px);
         }
       }
+      span:nth-child(2) {
+        opacity: 0;
+      }
       span:last-child {
         transform: rotate(-45deg) translate(6px, -6px);
 
@@ -377,38 +380,24 @@
     }
   }
 
+  // ============ ИСПРАВЛЕННЫЙ БЛОК КНОПОК ============
   &__btnbox {
-    width: 98px;
-
-    @media (max-width: 1600px) {
-      width: 95px;
-    }
-
-    @media (max-width: 1440px) {
-      width: 92px;
-    }
-
-    @media (max-width: 1280px) {
-      width: 90px;
-    }
-
-    @media (max-width: 1024px) {
-      width: 88px;
-    }
-
-    @media (max-width: 900px) {
-      width: 85px;
-    }
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
 
     @media (max-width: 768px) {
-      width: auto;
+      gap: 10px;
+    }
+
+    @media (max-width: 576px) {
+      gap: 8px;
     }
   }
 
   &__btn {
     display: inline-block;
-    justify-content: center;
-    width: 100%;
     padding: 10px 25px;
     background: var(--primary-color);
     color: var(--second-color);
@@ -418,6 +407,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 4px;
+    white-space: nowrap;
+    font-size: 14px;
 
     @media (max-width: 1600px) {
       padding: 9px 23px;
@@ -447,38 +438,119 @@
     @media (max-width: 768px) {
       background: var(--second-color);
       color: var(--primary-color);
-      padding: 10px 25px;
+      padding: 8px 18px;
       border-radius: 8px;
-      font-size: 14px;
-    }
-
-    @media (max-width: 576px) {
-      padding: 9px 22px;
       font-size: 13px;
     }
 
-    @media (max-width: 480px) {
-      padding: 8px 20px;
+    @media (max-width: 576px) {
+      padding: 7px 14px;
       font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 6px 12px;
+      font-size: 11px;
     }
 
     @media (max-width: 375px) {
-      padding: 7px 18px;
-      font-size: 12px;
+      padding: 5px 10px;
+      font-size: 10px;
     }
 
     @media (max-width: 320px) {
-      padding: 6px 16px;
-      font-size: 11px;
+      padding: 4px 8px;
+      font-size: 10px;
     }
 
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      opacity: 0.9;
     }
 
     &:active {
       transform: translateY(0);
+    }
+  }
+
+  // ============ МЕНЮ ПОЛЬЗОВАТЕЛЯ (НОВЫЙ БЛОК) ============
+  .userMenu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+
+    @media (max-width: 787px) {
+      max-width: 210px;
+    }
+
+    @media (max-width: 576px) {
+      max-width: 210px;
+    }
+
+    @media (max-width: 480px) {
+      max-width: 150px;
+    }
+  }
+
+  .userName {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+
+    @media (max-width: 768px) {
+      
+      max-width: 200px;
+    }
+
+    @media (max-width: 576px) {
+      
+      max-width: 200px;
+    }
+
+    @media (max-width: 480px) {
+      
+      max-width: 200px;
+    }
+  }
+
+  // Кнопка выхода в меню пользователя
+  .userMenu .header__btn {
+    background: var(--primary-color);
+    color: var(--second-color);
+    padding: 8px 16px;
+    font-size: 13px;
+    border-radius: 6px;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      
+      font-size: 12px;
+    }
+
+    @media (max-width: 576px) {
+      
+      font-size: 11px;
+    }
+
+    @media (max-width: 480px) {
+      
+      font-size: 10px;
+    }
+
+    @media (max-width: 375px) {
+      
+      font-size: 9px;
+    }
+
+    &:hover {
+      background: #333;
+      opacity: 0.9;
     }
   }
 

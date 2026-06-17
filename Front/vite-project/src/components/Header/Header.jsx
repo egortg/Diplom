@@ -87,7 +87,7 @@ const Header = () => {
             </ul>
           </div>
 
-          <div className={s.header__btnbox}>
+         
             {isAuthenticated ? (
               <div className={s.userMenu}>
                 <span className={s.userName}>{user?.fullName}</span>
@@ -96,11 +96,13 @@ const Header = () => {
                 </button>
               </div>
             ) : (
+              <div className={s.header__btnbox}>
               <button className={s.header__btn} onClick={handleLoginClick}>
                 Войти
               </button>
+              </div>
             )}
-          </div>
+          
         </div>
 
         <div className={`${s.header__overlay} ${isMenuOpen ? s.active : ""}`} onClick={closeMenu}></div>

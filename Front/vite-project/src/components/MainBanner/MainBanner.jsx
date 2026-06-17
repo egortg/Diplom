@@ -58,9 +58,6 @@ const MainBanner = () => {
         <div className={s.mainbanner}>
             <div className={s.mainbanner__box} style={{
                 backgroundImage: `url(${bannerData.background_image_url})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover'
             }}>
                 <div className={s.mainbanner__heading}>
                     <h1 className={s.mainbanner__h1}>{bannerData.title}</h1>
