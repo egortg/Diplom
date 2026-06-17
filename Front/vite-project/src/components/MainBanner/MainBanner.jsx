@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import s from "./mainbanner.module.scss";
 
 const MainBanner = () => {
@@ -24,8 +24,7 @@ const MainBanner = () => {
                 description: 'Бесплатное обслуживание навсегда',
                 button_text: 'Получить карту',
                 button_link: '/debit-card',
-                background_image_url: '/images/MainBannerImg.png',
-                is_active: true
+                backgroundImage: `url(/images/MainBannerImg.png)`,
             });
         } finally {
             setLoading(false);
@@ -51,22 +50,14 @@ const MainBanner = () => {
         );
     }
 
-    if (!bannerData || bannerData.is_active === false) {
+    if (!bannerData) {
         return null;
     }
-
-    
-    const backgroundImageUrl = bannerData.background_image_url 
-        ? bannerData.background_image_url 
-        : '/images/MainBannerImg.png';
 
     return (
         <div className={s.mainbanner}>
             <div className={s.mainbanner__box} style={{
-                backgroundImage: `url(${backgroundImageUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat'
+                backgroundImage: `url(${bannerData.background_image_url})`,
             }}>
                 <div className={s.mainbanner__heading}>
                     <h1 className={s.mainbanner__h1}>{bannerData.title}</h1>
