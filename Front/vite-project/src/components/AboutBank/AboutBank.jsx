@@ -10,7 +10,7 @@ const AboutBank = () => {
 
     const fetchAboutBank = async () => {
         try {
-            const response = await fetch('https://diplom-lpv5.onrender.com/api/content/about-bank');
+            const response = await fetch('http://localhost:5000/api/content/about-bank');
             const data = await response.json();
             setAboutData(data);
         } catch (error) {
