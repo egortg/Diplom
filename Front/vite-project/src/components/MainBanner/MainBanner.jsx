@@ -13,7 +13,7 @@ const MainBanner = () => {
 
     const fetchMainBanner = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/content/main-banner');
+            const response = await fetch('https://diplom-lpv5.onrender.com/api/content/main-banner');
             const data = await response.json();
             setBannerData(data);
         } catch (error) {
