@@ -16,23 +16,26 @@ const AboutBank = () => {
             setAboutData(data);
         } catch (error) {
             console.error('Failed to fetch about bank:', error);
-            // Данные по умолчанию
+            // Данные по умолчанию с правильными путями
             setAboutData({
                 heading: 'О банке',
                 bestservice: {
                     title: 'Признание в обслуживании клиентов',
                     description: 'В 2023 году получил награды в рамках международной премии Customer Centricity World Series за лучшую стратегию обслуживания клиентов и бизнес-трансформацию премиального обслуживания.',
-                    image_url: '/images/AboutSchema.svg'
+                    image_url: '/images/AboutSchema.svg',
+                    is_active: true
                 },
                 secondadv: {
                     title: 'Крупнейший частный банк',
                     description: '30 миллионов клиентов выбрали нас\n\n525+ офисов и доставка более чем в 1500 городов',
-                    image_url: '/images/AboutTerminal.svg'
+                    image_url: '/images/AboutTerminal.svg',
+                    is_active: true
                 },
                 thirdadv: {
                     title: 'Инновации в платежных технологиях',
                     description: 'Лучший кейс в технологиях платежей и расчетов.',
-                    image_url: '/images/AboutAtm.svg'
+                    image_url: '/images/AboutAtm.svg',
+                    is_active: true
                 }
             });
         } finally {
@@ -63,7 +66,7 @@ const AboutBank = () => {
 
                 <div className={s.aboutbank__info}>
                     {/* Блок 1 - Лучший сервис */}
-                    {aboutData.bestservice && (
+                    {aboutData.bestservice && aboutData.bestservice.is_active !== false && (
                         <div className={s.aboutbank__bestservicebox}>
                             <div className={s.aboutbank__bestservicetext}>
                                 <h3 className={s.aboutbank__bestservicetitle}>
@@ -75,21 +78,28 @@ const AboutBank = () => {
                             </div>
 
                             <div className={s.aboutbank__bestserviceimage}>
-                                <img className={s.aboutbank__bestserviceimg}src={aboutData.bestservice.image_url} alt={aboutData.bestservice.title} />
+                                <img 
+                                    src={aboutData.bestservice.image_url || '/images/AboutSchema.svg'} 
+                                    alt={aboutData.bestservice.title}
+                                    onError={(e) => {
+                                        e.target.onerror = null;
+                                        e.target.src = '/images/AboutSchema.svg';
+                                    }}
+                                />
                             </div>
                         </div>
                     )}
 
                     <div className={s.aboutbank__otheradv}>
                         {/* Блок 2 - Крупнейший частный банк */}
-                        {aboutData.secondadv && (
+                        {aboutData.secondadv && aboutData.secondadv.is_active !== false && (
                             <div className={s.aboutbank__secondadvbox}>
                                 <div className={s.aboutbank__secondadvtext}>
                                     <h3 className={s.aboutbank__secondadvtitle}>
                                         {aboutData.secondadv.title}
                                     </h3>
                                     <p className={s.aboutbank__secondadvdesc}>
-                                        {aboutData.secondadv.description.split('\n').map((line, i) => (
+                                        {aboutData.secondadv.description?.split('\n').map((line, i) => (
                                             <span key={i}>
                                                 {line}
                                                 {i < aboutData.secondadv.description.split('\n').length - 1 && <br />}
@@ -99,13 +109,20 @@ const AboutBank = () => {
                                 </div>
 
                                 <div className={s.aboutbank__secondadvimage}>
-                                    <img  className={s.aboutbank__secondadvimg} src={aboutData.secondadv.image_url} alt={aboutData.secondadv.title} />
+                                    <img 
+                                        src={aboutData.secondadv.image_url || '/images/AboutTerminal.svg'} 
+                                        alt={aboutData.secondadv.title}
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = '/images/AboutTerminal.svg';
+                                        }}
+                                    />
                                 </div>
                             </div>
                         )}
 
                         {/* Блок 3 - Инновации */}
-                        {aboutData.thirdadv && (
+                        {aboutData.thirdadv && aboutData.thirdadv.is_active !== false && (
                             <div className={s.aboutbank__thirdadvbox}>
                                 <div className={s.aboutbank__thirdadvtext}>
                                     <h3 className={s.aboutbank__thirdadvtitle}>
@@ -117,7 +134,14 @@ const AboutBank = () => {
                                 </div>
 
                                 <div className={s.aboutbank__thirdadvimage}>
-                                    <img className={s.aboutbank__thirdadvimg} src={aboutData.thirdadv.image_url} alt={aboutData.thirdadv.title} />
+                                    <img 
+                                        src={aboutData.thirdadv.image_url || '/images/AboutAtm.svg'} 
+                                        alt={aboutData.thirdadv.title}
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = '/images/AboutAtm.svg';
+                                        }}
+                                    />
                                 </div>
                             </div>
                         )}
