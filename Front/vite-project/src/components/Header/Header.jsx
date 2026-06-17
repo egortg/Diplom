@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import LoginForm from '../Auth/LoginForm';
 import RegisterForm from '../Auth/RegisterForm';
 import s from "./header.module.scss";
-import Logo from "../../assets/images/Logo.svg";
+import Logo from "../../../images/Logo.svg";
 import { Link } from "react-router";
 
 const Header = () => {

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import s from "./couldbeint.module.scss";
-import BlockoneimgCard from "../../assets/images/BlockoneimgCard.png";  
-import BlocktwoimgCard from "../../assets/images/BlocktwoimgCard.png";
-import BlockthreeimgMoney from "../../assets/images/BlockthreeimgMoney.png";
-import Blockfourimgvault from "../../assets/images/Blockfourimgvault.png";
+import BlockoneimgCard from "../../../images/BlockoneimgCard.png";  
+import BlocktwoimgCard from "../../../images/BlocktwoimgCard.png";
+import BlockthreeimgMoney from "../../../images/BlockthreeimgMoney.png";
+import Blockfourimgvault from "../../../images/Blockfourimgvault.png";
 
 // Компонент карточки
 const Card = ({ title, description, imageSrc, link, className }) => {
