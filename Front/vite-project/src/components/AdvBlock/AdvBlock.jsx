@@ -13,7 +13,7 @@ const AdvBlock = () => {
 
     const fetchAdvBlock = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/content/adv-block');
+            const response = await fetch('https://diplom-lpv5.onrender.com/api/content/adv-block');
             const data = await response.json();
             setAdvData(data);
         } catch (error) {

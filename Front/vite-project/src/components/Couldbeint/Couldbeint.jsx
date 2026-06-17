@@ -61,7 +61,7 @@ const Couldbeint = () => {
 
   const fetchBlocks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/content/interest-blocks');
+      const response = await fetch('hhttps://diplom-lpv5.onrender.com/api/content/interest-blocks');
       const data = await response.json();
       setBlocks(data);
     } catch (error) {

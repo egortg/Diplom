@@ -26,7 +26,7 @@ const AdminDashboard = () => {
     try {
       const token = localStorage.getItem("adminToken");
       const response = await axios.get(
-        "http://localhost:5000/api/admin/dashboard",
+        "https://diplom-lpv5.onrender.com/api/admin/dashboard",
         {
           headers: { Authorization: `Bearer ${token}` },
         },

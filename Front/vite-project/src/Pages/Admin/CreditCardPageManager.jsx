@@ -38,16 +38,16 @@ const CreditCardPageManager = () => {
     try {
       const token = localStorage.getItem("adminToken");
       const [bannerRes, benefitsRes, stepsRes, formRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/admin/credit-card-banner", {
+        axios.get("https://diplom-lpv5.onrender.com/api/admin/credit-card-banner", {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get("http://localhost:5000/api/admin/credit-card-benefits", {
+        axios.get("https://diplom-lpv5.onrender.com/api/admin/credit-card-benefits", {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get("http://localhost:5000/api/admin/credit-card-steps", {
+        axios.get("https://diplom-lpv5.onrender.com/api/admin/credit-card-steps", {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get("http://localhost:5000/api/admin/credit-card-form", {
+        axios.get("https://diplom-lpv5.onrender.com/api/admin/credit-card-form", {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -68,7 +68,7 @@ const CreditCardPageManager = () => {
     
     try {
       const token = localStorage.getItem("adminToken");
-      const response = await axios.post("http://localhost:5000/api/admin/upload", formData, {
+      const response = await axios.post("https://diplom-lpv5.onrender.com/api/admin/upload", formData, {
         headers: { 
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data"
@@ -111,11 +111,11 @@ const CreditCardPageManager = () => {
       const token = localStorage.getItem("adminToken");
       await Promise.all([
         axios.put(
-          "http://localhost:5000/api/admin/credit-card-banner",
+          "https://diplom-lpv5.onrender.com/api/admin/credit-card-banner",
           banner,
           { headers: { Authorization: `Bearer ${token}` } }
         ),
-        axios.put("http://localhost:5000/api/admin/credit-card-form", form, {
+        axios.put("https://diplom-lpv5.onrender.com/api/admin/credit-card-form", form, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
@@ -132,7 +132,7 @@ const CreditCardPageManager = () => {
     const token = localStorage.getItem("adminToken");
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/credit-card-benefits/${id}`,
+        `https://diplom-lpv5.onrender.com/api/admin/credit-card-benefits/${id}`,
         updates,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -146,7 +146,7 @@ const CreditCardPageManager = () => {
     const token = localStorage.getItem("adminToken");
     try {
       await axios.post(
-        "http://localhost:5000/api/admin/credit-card-benefits",
+        "https://diplom-lpv5.onrender.com/api/admin/credit-card-benefits",
         {
           title: "Новое преимущество",
           image_url: "/images/placeholder.svg",
@@ -166,7 +166,7 @@ const CreditCardPageManager = () => {
     const token = localStorage.getItem("adminToken");
     try {
       await axios.delete(
-        `http://localhost:5000/api/admin/credit-card-benefits/${id}`,
+        `https://diplom-lpv5.onrender.com/api/admin/credit-card-benefits/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       await fetchAllData();
@@ -179,7 +179,7 @@ const CreditCardPageManager = () => {
     const token = localStorage.getItem("adminToken");
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/credit-card-steps/${id}`,
+        `https://diplom-lpv5.onrender.com/api/admin/credit-card-steps/${id}`,
         updates,
         { headers: { Authorization: `Bearer ${token}` } }
       );

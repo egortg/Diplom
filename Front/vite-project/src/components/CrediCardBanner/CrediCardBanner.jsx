@@ -29,8 +29,8 @@ const CreditCardBanner = () => {
   const fetchData = async () => {
     try {
       const [bannerRes, benefitsRes] = await Promise.all([
-        fetch('http://localhost:5000/api/content/credit-card-banner'),
-        fetch('http://localhost:5000/api/content/credit-card-benefits')
+        fetch('https://diplom-lpv5.onrender.com/api/content/credit-card-banner'),
+        fetch('https://diplom-lpv5.onrender.com/api/content/credit-card-benefits')
       ]);
       
       const banner = await bannerRes.json();
