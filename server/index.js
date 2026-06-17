@@ -1241,6 +1241,14 @@ const initTestData = () => {
 
 initTestData();
 
+
+
+// Раздача статических файлов из папки public
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
+
+// Или если изображения в папке server/images
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 // ============ 404 ОБРАБОТЧИК ============
 app.use((req, res) => {
     res.status(404).json({ success: false, message: `Маршрут ${req.url} не найден` });
