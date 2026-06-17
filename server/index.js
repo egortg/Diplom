@@ -71,10 +71,32 @@ const admins = [
 // Хранилище для контента
 let interestBlocks = [];
 
+// ============ НАСТРОЙКА CORS (ИСПРАВЛЕННАЯ) ============
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://diplom-blkl.vercel.app',
+    'https://diplom-egortg.vercel.app',
+    'https://diplom-lpv5.onrender.com',
+    'https://diplom.vercel.app'
+];
+
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
+    origin: function (origin, callback) {
+        // Разрешить запросы без origin (например, от curl)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+            callback(null, true);
+        } else {
+            console.log('❌ CORS blocked:', origin);
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use(express.json());
 
 // Логирование
@@ -272,15 +294,9 @@ app.get('/api/auth/me', (req, res) => {
     }
 });
 
-// ============ ВЫХОД ИЗ СИСТЕМЫ (ИСПРАВЛЕННЫЙ) ============
+// ============ ВЫХОД ИЗ СИСТЕМЫ ============
 app.post('/api/auth/logout', (req, res) => {
     console.log('👋 Logout request received');
-    
-    // Удаляем токен из хранилища (если есть)
-    // В in-memory хранилище просто возвращаем успех
-    // Если нужно удалить refresh token, можно добавить логику
-    
-    // Всегда возвращаем успех для клиента
     return res.status(200).json({ 
         success: true, 
         message: 'Вы успешно вышли из системы' 
@@ -1242,6 +1258,13 @@ app.listen(PORT, () => {
 ║                                                                           ║
 ║   📤 Загрузка изображений: /api/admin/upload                              ║
 ║   📁 Статическая папка: /uploads                                          ║
+║                                                                           ║
+║   🌐 Разрешенные CORS домены:                                              ║
+║      - http://localhost:5173                                              ║
+║      - https://diplom-blkl.vercel.app                                    ║
+║      - https://diplom-egortg.vercel.app                                  ║
+║      - https://diplom-lpv5.onrender.com                                  ║
+║      - https://diplom.vercel.app                                         ║
 ║                                                                           ║
 ║   🔑 Данные для входа админа:                                             ║
 ║   📧 Email: admin@bank.com                                                ║
