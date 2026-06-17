@@ -9,15 +9,7 @@ const Benefit = ({ title, imageSrc }) => {
         <h3 className={s.creditbanner__benefittitle}>{title}</h3>
       </div>
       <div className={s.creditbanner__benefitimgbox}>
-        <img 
-          className={s.creditbanner__benefitimage}
-          src={imageSrc} 
-          alt={title}
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = '/images/CreditCardBenefitdiscount.svg';
-          }}
-        />
+        <img  className={s.creditbanner__benefitimage}src={imageSrc} alt={title} />
       </div>
     </div>
   );
@@ -48,7 +40,7 @@ const CreditCardBanner = () => {
       setBenefits(benefitsData);
     } catch (error) {
       console.error('Failed to fetch:', error);
-      // Данные по умолчанию с правильными путями
+      // Данные по умолчанию
       setBannerData({
         title: 'Кредитная Карта от ЧБ Банка',
         description: '100 дней без процентов на всё',
@@ -96,9 +88,6 @@ const CreditCardBanner = () => {
   // Если баннер не активен - не показываем
   if (!bannerData || bannerData.is_active === false) return null;
 
-  // Формируем URL изображения баннера с fallback
-  const bannerImageUrl = bannerData.image_url || '/images/CreditCardimgBanner.png';
-
   return (
     <>
       <div className={s.creditbanner}>
@@ -115,14 +104,7 @@ const CreditCardBanner = () => {
           </div>
 
           <div className={s.creditbanner__imgbox}>
-            <img 
-              src={bannerImageUrl} 
-              alt="Credit Card"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/images/CreditCardimgBanner.png';
-              }}
-            />
+            <img src={bannerData.image_url} alt="Credit Card" />
           </div>
 
           <div className={s.creditbanner__benefits}>

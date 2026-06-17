@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import s from "./couldbeint.module.scss";
+import BlockoneimgCard from "../../../images/BlockoneimgCard.png";  
+import BlocktwoimgCard from "../../../images/BlocktwoimgCard.png";
+import BlockthreeimgMoney from "../../../images/BlockthreeimgMoney.png";
+import Blockfourimgvault from "../../../images/Blockfourimgvault.png";
 
 // Компонент карточки
 const Card = ({ title, description, imageSrc, link, className }) => {
@@ -11,16 +15,7 @@ const Card = ({ title, description, imageSrc, link, className }) => {
         <p className={s.couldbeint__desc}>{description}</p>
       </div>
       <div className={s.couldbeint__imgbox}>
-        <img 
-          className={s.couldbeint__img} 
-          src={imageSrc} 
-          alt={title}
-          onError={(e) => {
-            e.target.onerror = null;
-            // Заглушка если изображение не загрузилось
-            e.target.src = '/images/BlockoneimgCard.png';
-          }}
-        />
+        <img className={s.couldbeint__img} src={imageSrc} alt={title} />
       </div>
     </>
   );
@@ -28,7 +23,7 @@ const Card = ({ title, description, imageSrc, link, className }) => {
   const handleClick = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth' // плавная прокрутка
     });
   };
 
@@ -71,12 +66,12 @@ const Couldbeint = () => {
       setBlocks(data);
     } catch (error) {
       console.error('Failed to fetch blocks:', error);
-      // Данные по умолчанию с правильными путями из public
+      // Данные по умолчанию, если сервер не доступен
       setBlocks([
-        { id: 1, title: 'Дебетовая карта', description: 'Кэшбэк до 30%', image_url: '/images/BlockoneimgCard.png', link: '/debit-card', block_type: 'debit_card' },
-        { id: 2, title: 'Кредитная карта', description: 'Обслуживание 0 ₽', image_url: '/images/BlocktwoimgCard.png', link: '/credit-card', block_type: 'credit_card' },
-        { id: 3, title: 'Кредит', description: 'Оформление онлайн', image_url: '/images/BlockthreeimgMoney.png', link: '/credit', block_type: 'credit' },
-        { id: 4, title: 'Сберегательный вклад', description: 'До 14,5% годовых', image_url: '/images/Blockfourimgvault.png', link: '/deposit', block_type: 'deposit' }
+        { id: 1, title: 'Дебетовая карта', description: 'Кэшбэк до 30%', image_url: BlockoneimgCard, link: '/debit-card', block_type: 'debit_card' },
+        { id: 2, title: 'Кредитная карта', description: 'Обслуживание 0 ₽', image_url: BlocktwoimgCard, link: '/credit-card', block_type: 'credit_card' },
+        { id: 3, title: 'Кредит', description: 'Оформление онлайн', image_url: BlockthreeimgMoney, link: '/credit', block_type: 'credit' },
+        { id: 4, title: 'Сберегательный вклад', description: 'До 14,5% годовых', image_url: Blockfourimgvault, link: '/deposit', block_type: 'deposit' }
       ]);
     } finally {
       setLoading(false);

@@ -18,14 +18,13 @@ const AdvBlock = () => {
             setAdvData(data);
         } catch (error) {
             console.error('Failed to fetch adv block:', error);
-            // Данные по умолчанию с правильным путем к изображению
+            // Данные по умолчанию
             setAdvData({
                 title: 'Наши клиенты получают повышенный кэшбэк у партнёров',
                 description: 'Ежемесячно мы предлагаем выгодные условия от наших партнёров: кэшбэк на продукты, одежду, технику, развлечения и обучение. Присоединяйтесь и получайте кэшбэк!',
                 button_text: 'Стать клиентом',
                 button_link: '/debit-card',
-                image_url: '/images/AdvBlockimg.svg',
-                is_active: true
+                image_url: '/images/AdvBlockimg.svg'
             });
         } finally {
             setLoading(false);
@@ -55,9 +54,6 @@ const AdvBlock = () => {
         return null;
     }
 
-    // Формируем URL изображения с fallback
-    const imageUrl = advData.image_url || '/images/AdvBlockimg.svg';
-
     return (
         <div className={s.advblock}>
             <div className={s.advblock__box}>
@@ -75,16 +71,7 @@ const AdvBlock = () => {
                 </div>
 
                 <div className={s.advblock__imagebox}>
-                    <img 
-                        className={s.advblock__image} 
-                        src={imageUrl} 
-                        alt="Advantage"
-                        onError={(e) => {
-                            // Если изображение не загрузилось, показываем заглушку
-                            e.target.onerror = null;
-                            e.target.src = '/images/AdvBlockimg.svg';
-                        }}
-                    />
+                    <img className={s.advblock__image} src={advData.image_url} alt="Advantage" />
                 </div>
             </div>
         </div>

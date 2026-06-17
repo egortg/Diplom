@@ -9,14 +9,7 @@ const Benefit = ({ title, imageSrc }) => {
         <h3 className={s.debitbanner__benefittitle}>{title}</h3>
       </div>
       <div className={s.debitbanner__benefitimgbox}>
-        <img 
-          src={imageSrc} 
-          alt={title}
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = '/images/BenefitOneimgWallet.svg';
-          }}
-        />
+        <img src={imageSrc} alt={title} />
       </div>
     </div>
   );
@@ -47,7 +40,7 @@ const DebitCardBanner = () => {
       setBenefits(benefitsData);
     } catch (error) {
       console.error('Failed to fetch:', error);
-      // Данные по умолчанию с правильными путями
+      // Данные по умолчанию
       setBannerData({
         title: 'Дебетовая карта от ЧБ Банка',
         description: 'Бесплатное обслуживание навсегда',
@@ -95,9 +88,6 @@ const DebitCardBanner = () => {
   // Если баннер не активен - не показываем
   if (!bannerData || bannerData.is_active === false) return null;
 
-  // Формируем URL изображения баннера с fallback
-  const bannerImageUrl = bannerData.image_url || '/images/DebitCardimgBanner.png';
-
   return (
     <>
       <div className={s.debitbanner}>
@@ -114,14 +104,7 @@ const DebitCardBanner = () => {
           </div>
 
           <div className={s.debitbanner__imgbox}>
-            <img 
-              src={bannerImageUrl} 
-              alt="Debit Card"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = '/images/DebitCardimgBanner.png';
-              }}
-            />
+            <img src={bannerData.image_url} alt="Debit Card" />
           </div>
 
           <div className={s.debitbanner__benefits}>
