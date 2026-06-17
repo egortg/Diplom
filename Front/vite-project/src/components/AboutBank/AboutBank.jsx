@@ -4,7 +4,6 @@ import s from "./aboutbank.module.scss";
 const AboutBank = () => {
     const [aboutData, setAboutData] = useState(null);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         fetchAboutBank();
     }, []);
